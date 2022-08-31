@@ -27,7 +27,8 @@ phases:
       #- docker push $REPOSITORY_URI:$IMAGE_TAG
       - aws ecr get-login-password  --region ap-south-1 | docker login --username AWS  --password-stdin 542023287726.dkr.ecr.ap-south-1.amazonaws.com
 
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+     # - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - docker push public.ecr.aws/c9r1n7y5/node-app:latest
       - echo Writing image definitions file...
       - printf '[{"name":"nodeapp","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - cat imagedefinitions.json 
